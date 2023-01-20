@@ -19,10 +19,10 @@ namespace SnapGame.VM
     {
 
         DispatcherTimer timer = new DispatcherTimer();
-        public GameContrSnapoller SnapGame { get; set; }
+        public SnapController SnapGame { get; set; }
         public GameViewModel()
         {
-            SnapGame = new GameContrSnapoller(Options);
+            SnapGame = new SnapController(Options);
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
             StartCommand = new RelayCommand(Reset);

@@ -19,7 +19,7 @@ namespace SnapGame.Model
         Running = 2,
         End = 4,
     }
-    public class GameContrSnapoller : INPCbase
+    public class SnapController : INPCbase
     {
         private Player? winner;
         int p = 0;
@@ -38,7 +38,7 @@ namespace SnapGame.Model
             set { result = value; OnPropertyChanged(); }
         }
 
-        public GameContrSnapoller(GameOptions? options)
+        public SnapController(GameOptions? options)
         {
             Options = options;
             Players = new[] {new Player { PlayerName ="P1"},
@@ -128,7 +128,7 @@ namespace SnapGame.Model
         private void ExecSnap(Card? c, Card? c1)
         {
             if (!CheckSnap(c, c1)) return;
-            var p = Players[Random.Shared.Next(0, 1)];
+            var p = Players[Random.Shared.Next(0, Players.Length)];
             Result += $"Snapped {c} and {c1} to player{p} ";
             for (int i = CardPile.Count; i > 0; i--)
             {
